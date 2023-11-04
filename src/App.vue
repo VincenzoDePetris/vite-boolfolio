@@ -4,22 +4,31 @@ import WorkList from "./components/works/WorkList.vue";
 
 export default {
   data() {
-    return {};
+    return {
+      works: [],
+    };
   },
 
   components: { WorkList },
 
+  methods: {
+    fetchWorks() {
+      axios.get("http://127.0.0.1:8000/api/works").then((response) => {
+        console.log(response.data.works);
+        this.works = response.data.works;
+      });
+    },
+  },
+
   created() {
-    axios.get("http://127.0.0.1:8000/api/works").then((response) => {
-      console.log(response);
-    });
+    this.fetchWorks();
   },
 };
 </script>
 
 <template>
   <h1>BOOLFOLIO</h1>
-  <WorkList />
+  <WorkList :works="works" />
 </template>
 
 <style lang="scss"></style>
