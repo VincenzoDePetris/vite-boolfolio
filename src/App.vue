@@ -8,6 +8,12 @@ export default {
   },
 
   components: { WorkList },
+
+  created() {
+    axios.get("http://127.0.0.1:8000/api/works").then((response) => {
+      console.log(response);
+    });
+  },
 };
 </script>
 
