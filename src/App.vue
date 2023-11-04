@@ -1,4 +1,5 @@
 <script>
+import axios from "axios";
 import WorkList from "./components/works/WorkList.vue";
 
 export default {
