@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import WorkList from "./components/works/WorkList.vue";
+import NavBar from "./components/works/NavBar.vue";
 
 export default {
   data() {
@@ -9,26 +10,13 @@ export default {
     };
   },
 
-  components: { WorkList },
-
-  methods: {
-    fetchWorks() {
-      axios.get("http://127.0.0.1:8000/api/works").then((response) => {
-        console.log(response.data.works);
-        this.works = response.data.works;
-      });
-    },
-  },
-
-  created() {
-    this.fetchWorks();
-  },
+  components: { WorkList, NavBar },
 };
 </script>
 
 <template>
-  <h1>BOOLFOLIO</h1>
-  <WorkList :works="works" />
+  <NavBar />
+  <router-view></router-view>
 </template>
 
 <style lang="scss"></style>
